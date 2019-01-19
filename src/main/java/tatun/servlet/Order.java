@@ -10,14 +10,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "Order", urlPatterns = {"/order"})
-public class Order extends Servlet {
+public class Order extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-        try (PrintWriter out = response.getWriter()) {
-            print(out, "Order");
-        }
+        request.getRequestDispatcher("WEB-INF/order.jsp").forward(request, response);
     }
 }
